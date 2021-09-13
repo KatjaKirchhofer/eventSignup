@@ -1,0 +1,34 @@
+
+  <form #formSignup="ngForm">
+      <div class="card text-white bg-dark p-5"> 
+        <div class="card-header">
+            <h1>Sign up for our Yoga Event Newsletter!</h1>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    
+                    <input #inputEmail="ngModel" name="newsletterSignup" [(ngModel)]="signupMail" class="form-control mb-2" email minlength="8" required placeholder="E-Mail Adresse eingeben" >
+
+                </div>
+            </div>
+            <div *ngIf="inputEmail.invalid && inputEmail.touched || inputEmail.dirty" class="row">
+                <div class="col">
+                    <div class="alert alert-danger">
+                        Bitte eine gültige E-Mail Adresse eingeben
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col">
+                    <button [disabled]="formSignup.invalid" (click)="onSubmit()" class="btn btn-primary"> Absenden!</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+  </form>
