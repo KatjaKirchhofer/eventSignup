@@ -14,8 +14,19 @@
             </div>
             <div *ngIf="inputEmail.invalid && inputEmail.touched || inputEmail.dirty" class="row">
                 <div class="col">
-                    <div class="alert alert-danger">
+
+
+                    <div *ngIf="inputEmail.errors?.required" class="alert alert-danger">
                         Bitte eine gültige E-Mail Adresse eingeben
+                    </div>
+
+                    <div *ngIf="inputEmail.errors?.minlength" class="alert alert-danger">
+                        Bitte minestens 8 Zeichen eingeben.
+                    </div>
+
+
+                    <div *ngIf="inputEmail.errors?.email && !inputEmail.hasError('minlength')" class="alert alert-danger">
+                        Dies ist keine gültige E-Mail Adresse.
                     </div>
                     
                 </div>
